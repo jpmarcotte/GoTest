@@ -1,0 +1,9 @@
+services:
+  gotest-app:
+    build:
+      context: .
+    environment:
+      PORT: ${PORT}
+    ports:
+      - "${PORT}:${PORT}"
+    command: [ "./webserver" ]
