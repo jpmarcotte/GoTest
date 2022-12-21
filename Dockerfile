@@ -12,8 +12,6 @@ COPY main.go ./
 COPY src/ ./src/
 COPY data/ ./data/
 
-RUN file="$(ls -l ./)" && echo "$file"
-RUN file="$(ls -l ./src/)" && echo "$file"
 RUN go build -o ./webserver
 
 EXPOSE ${PORT}
