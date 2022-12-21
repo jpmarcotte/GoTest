@@ -23,7 +23,8 @@ func (s *SQLiteStore) GetAllEmployees() ([]Employee, error) {
 	if err != nil {
 		return nil, err
 	}
-	//goland:noinspection GoUnhandledErrorResult
+
+	//goland:noinspection GoUnhandledErrorResult nothing useful to do with this error
 	defer rows.Close()
 
 	employees := make([]Employee, 0)
