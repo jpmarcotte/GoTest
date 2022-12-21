@@ -2,23 +2,23 @@ package employee
 
 import (
 	"database/sql"
-	_ "github.com/mattn/go-sqlite3"
+	_ "github.com/mattn/go-sqlite3" // Included to support sqlite storage drivers
 )
 
-type SQLiteStore struct {
+type SQLStore struct {
 	db *sql.DB
 }
 
-func NewSQLiteStore() (*SQLiteStore, error) {
-	s := SQLiteStore{}
-	if err := s.connectDatabase(); err != nil {
+func NewSQLStore(driver, dataSource string) (*SQLStore, error) {
+	s := SQLStore{}
+	if err := s.connectDatabase(driver, dataSource); err != nil {
 		return nil, err
 	}
 
 	return &s, nil
 }
 
-func (s *SQLiteStore) GetAllEmployees() ([]Employee, error) {
+func (s *SQLStore) GetAllEmployees() ([]Employee, error) {
 	rows, err := s.db.Query("SELECT id, gender FROM employees")
 	if err != nil {
 		return nil, err
@@ -41,8 +41,8 @@ func (s *SQLiteStore) GetAllEmployees() ([]Employee, error) {
 	return employees, nil
 }
 
-func (s *SQLiteStore) connectDatabase() error {
-	db, err := sql.Open("sqlite3", "./data/employees.db")
+func (s *SQLStore) connectDatabase(driver, dataSource string) error {
+	db, err := sql.Open(driver, dataSource)
 	if err != nil {
 		return err
 	}

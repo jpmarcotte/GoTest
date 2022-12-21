@@ -3,6 +3,7 @@ package employee
 import (
 	"github.com/labstack/echo/v4"
 	"net/http"
+	"os"
 )
 
 type Handler struct {
@@ -10,8 +11,9 @@ type Handler struct {
 }
 
 func NewHandler() (*Handler, error) {
+	// Consider Store Repository if wanting to support more complex options
 	//return &Handler{store: NewMemoryStore()}, nil
-	store, err := NewSQLiteStore()
+	store, err := NewSQLStore(os.Getenv("DB_DRIVER"), os.Getenv("DB_SOURCE"))
 	return &Handler{store: store}, err
 }
 
