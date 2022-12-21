@@ -4,6 +4,8 @@ services:
       context: .
     environment:
       PORT: ${PORT}
+      DB_DRIVER: ${DB_DRIVER}
+      DB_SOURCE: ${DB_SOURCE}
     ports:
       - "${PORT}:${PORT}"
     command: [ "./webserver" ]
