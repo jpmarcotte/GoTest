@@ -24,7 +24,7 @@ func (h *Handler) GetAllEmployees(ctx echo.Context) error {
 	if err != nil {
 		return ctx.JSONPretty(http.StatusInternalServerError, struct{
 			Message string `json:"message"`
-		}{Message:err.Error()}, "  ")
+		}{Message:err.Error()}, "    ")
 	}
-	return ctx.JSONPretty(http.StatusOK, employees, "  ")
+	return ctx.JSONPretty(http.StatusOK, employees, "    ")
 }

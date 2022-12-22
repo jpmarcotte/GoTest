@@ -10,7 +10,7 @@ and to demonstrate how different persistant storage engines can be used.
 - Local development will benefit from a recent build of Go and SQLite.
 - To run as a proof of concept, all that is required is Docker
 
-### Instructions
+### Instructions for Docker
 
 - If not already viewing from an archive, clone and move into the Repo:
   ```bash
@@ -24,10 +24,10 @@ and to demonstrate how different persistant storage engines can be used.
   docker compose up -d
   ```
 - open the link with the appropriate port (change the port if changed from default):
-  http://localhost:51701/employees/
+  http://localhost:51701/employees
 - alternatively fetch using `curl`:
   ```bash
-  curl http://localhost:51701/employees/
+  curl http://localhost:51701/employees
   ```
 ### Cleanup
 - Stop docker
@@ -37,6 +37,22 @@ and to demonstrate how different persistant storage engines can be used.
 - Remove existing docker image
   ```bash
   docker image rm gotest-gotest-app
+  ```
+  
+### Instructions without Docker
+- Build the application
+  ```bash
+  go build -o ./webserver
+  ```
+- Run the webserver using an exec env var
+  ```bash
+  PORT=51701 ./webserver
+  ```
+- open the link with the appropriate port (same as above):
+  http://localhost:51701/employees
+- alternatively fetch using `curl`:
+  ```bash
+  curl http://localhost:51701/employees
   ```
   
 [ncc-1701]: https://static.wikia.nocookie.net/memoryalpha/images/b/be/USS_Enterprise_%28NCC-1701%29%2C_ENT.jpg/revision/latest?cb=20171022133400&path-prefix=en
