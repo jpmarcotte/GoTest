@@ -12,7 +12,7 @@ and to demonstrate how different persistant storage engines can be used.
 
 ### Instructions
 
-- Clone and move into the Repo:
+- If not already viewing from an archive, clone and move into the Repo:
   ```bash
   git clone git@github.com:jpmarcotte/GoTest.git
   cd GoTest
