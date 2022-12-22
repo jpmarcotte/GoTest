@@ -6,6 +6,7 @@ import (
 	"os"
 )
 
+// main sets up the webserver
 func main() {
 	e := echo.New()
 	h, err := employee.NewHandler()
